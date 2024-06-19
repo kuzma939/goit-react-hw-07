@@ -21,18 +21,15 @@ export const addContact = createAsyncThunk('contacts/addContact', async (contact
     return rejectWithValue(error.message);
   }
 });
-export const deleteContactThunk = createAsyncThunk(
-    'contacts/deleteContact',
-    async (id) => {
-      try {
-        await axios.delete(`${BASE_URL}/${id}`);
-        return id;
-      } catch (error) {
-        console.error('Error deleting contact:', error);
-        throw error;
-       
-      }
-    }
-  );
 
-  
+  export const deleteContact = createAsyncThunk('contacts/deleteContact', async (id, { rejectWithValue }) => {
+    try {
+      await axios.delete(`${BASE_URL}/${id}`);
+      return id;
+    } catch (error) {
+      return rejectWithValue(error.message);
+      //console.error('Error deleting contact:', error);
+      //throw error;
+    }
+  });
+ 

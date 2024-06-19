@@ -1,6 +1,6 @@
 
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContactThunk } from '../../api';
+import { deleteContact } from '../../api';
 import styles from './ContactList.module.css';
 
 const ContactList = () => {
@@ -12,7 +12,7 @@ const ContactList = () => {
       {contacts.map(({ id, name, number }) => (
         <li key={id} className={styles.item}>
           <p>{name}: {number}</p>
-          <button className={styles.listButton} onClick={() => dispatch(deleteContactThunk(id))}>Delete</button>
+          <button className={styles.listButton} onClick={() => dispatch(deleteContact(id))}>Delete</button>
         </li>
       ))}
     </ul>
