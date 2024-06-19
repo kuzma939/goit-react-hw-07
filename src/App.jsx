@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <div>
-       <h1>Книга контактів</h1>
+       <h1>Contact Book</h1>
       <ContactForm />
      
       <Filter />
