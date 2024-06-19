@@ -16,9 +16,9 @@ const App = () => {
 
   return (
     <div>
-      <h1>Phonebook</h1>
+       <h1>Книга контактів</h1>
       <ContactForm />
-      <h2>Contacts</h2>
+     
       <Filter />
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
