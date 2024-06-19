@@ -12,7 +12,7 @@ const ContactList = () => {
         {contacts.map(({ id, name, number }) => (
           <li key={id} className={styles.item}>
             {name}: {number}
-            <button onClick={() => dispatch(deleteContact(id))} className={styles.button}>
+            <button onClick={() => dispatch(deleteContact(id))} className={styles.listButton}>
               Delete
             </button>
           </li>
