@@ -1,6 +1,6 @@
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter } from '../../redux/filterSlice';
+import { selectFilter } from '../../redux/filterSlice';
 import styles from './Filter.module.css';
 
 const Filter = () => {
@@ -14,7 +14,7 @@ const Filter = () => {
         <input
           type="text"
           value={filter}
-          onChange={(e) => dispatch(setFilter(e.target.value))}
+          onChange={(e) => dispatch(selectFilter(e.target.value))}
         />
       </label>
     </div>

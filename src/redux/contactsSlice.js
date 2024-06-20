@@ -60,10 +60,11 @@ export const selectFilter = (state) => state.filter;//Цей селектор в
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilter],
   (contacts, filter) => {
-    const lowercasedFilter = filter.toLowerCase();
+    const lowercasedFilter = filter.toLowerCase(filter);
     return contacts.filter(contact => contact.name.toLowerCase().includes(lowercasedFilter));
+  
   }
 );
 //Функція createSelector з бібліотеки reselect створює мемоізований селектор. 
 //Він бере два вхідні селектори (selectContacts і selectFilter) 
-//і функцію перетворення, яка викликається з результатами цих селекторів.
+//і функцію перетворення, яка викликається з результатами цих селекторів., filter
