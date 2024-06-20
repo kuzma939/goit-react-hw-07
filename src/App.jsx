@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-
+  
   return (
     <div>
        <h1>Contact Book</h1>
@@ -21,7 +21,7 @@ const App = () => {
      
       <Filter />
       {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
+  {error && <p>Error: {error}</p>}
       <ContactList />
     </div>
   );

@@ -3,7 +3,7 @@ import { setFilter } from '../../redux/filterSlice';
 import styles from './Filter.module.css';
 
 const Filter = () => {
-  const filter = useSelector(state => state.filter);
+  const filter = useSelector((state) => state.contacts.filter);
   const dispatch = useDispatch();
 
   return (
@@ -14,6 +14,7 @@ const Filter = () => {
           type="text"
           value={filter}
           onChange={(e) => dispatch(setFilter(e.target.value))}
+         
         />
       </label>
     </div>

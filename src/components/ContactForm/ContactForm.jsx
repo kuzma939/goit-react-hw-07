@@ -1,18 +1,29 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contactsOps';
 import styles from './ContactForm.module.css';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
+  const contacts = useSelector((state) => state.contacts.items);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addContact({ name, number }));
+
+    const contactExists = contacts.some(
+      (contact) => contact.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (contactExists) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
+
+    dispatch(addContact({ name, phone }));
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -23,14 +34,16 @@ const ContactForm = () => {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
       </label>
       <label>
-        Number
+      Phone
         <input
           type="text"
-          value={number}
-          onChange={(e) => setNumber(e.target.value)}
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          required
         />
       </label>
       <button className={styles.formButton} type="submit">Add contact</button>
