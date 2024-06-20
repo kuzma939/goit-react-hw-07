@@ -54,8 +54,8 @@ const contactsSlice = createSlice({
 export default contactsSlice.reducer;
 
 
-export const selectContacts = (state) => state.contacts.items;
-export const selectFilter = (state) => state.filter;
+export const selectContacts = (state) => state.contacts.items;//Цей селектор витягує масив контактів з Redux стану. Він бере весь стан state і повертає масив items з підстану contacts
+export const selectFilter = (state) => state.filter;//Цей селектор витягує значення фільтру з Redux стану.
 
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilter],
@@ -64,3 +64,6 @@ export const selectFilteredContacts = createSelector(
     return contacts.filter(contact => contact.name.toLowerCase().includes(lowercasedFilter));
   }
 );
+//Функція createSelector з бібліотеки reselect створює мемоізований селектор. 
+//Він бере два вхідні селектори (selectContacts і selectFilter) 
+//і функцію перетворення, яка викликається з результатами цих селекторів.
